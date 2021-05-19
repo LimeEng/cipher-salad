@@ -1,18 +1,11 @@
+use crate::cipher::CipherOperation;
 use crate::Alphabet;
+use crate::ForeignGraphemesPolicy;
 use unicode_segmentation::UnicodeSegmentation;
 
 pub struct Vigenere {
     foreign_policy: ForeignGraphemesPolicy,
     alphabet: Alphabet,
-}
-pub enum ForeignGraphemesPolicy {
-    Include,
-    Exclude,
-}
-
-enum CipherOperation {
-    Encrypt,
-    Decrypt,
 }
 
 #[derive(Debug)]
