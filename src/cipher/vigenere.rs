@@ -1,6 +1,7 @@
-use crate::cipher::CipherOperation;
-use crate::Alphabet;
-use crate::ForeignGraphemesPolicy;
+use crate::{
+    Alphabet, ForeignGraphemesPolicy,
+    cipher::CipherOperation::{self, Decrypt, Encrypt},
+};
 use unicode_segmentation::UnicodeSegmentation;
 
 pub struct Vigenere {
@@ -14,8 +15,9 @@ pub enum VigenereError {
 }
 
 impl Vigenere {
-    pub fn new(alphabet: Alphabet, foreign_policy: ForeignGraphemesPolicy) -> Vigenere {
-        Vigenere {
+    #[must_use]
+    pub fn new(alphabet: Alphabet, foreign_policy: ForeignGraphemesPolicy) -> Self {
+        Self {
             foreign_policy,
             alphabet,
         }
@@ -63,7 +65,6 @@ impl Vigenere {
             let ciphered = plain_index
                 .zip(key_index)
                 .and_then(|(plain_index, key_index)| {
-                    use CipherOperation::*;
                     let ciphered_index = match operation {
                         Encrypt => (plain_index + key_index).rem_euclid(self.alphabet.length()),
                         Decrypt => {
