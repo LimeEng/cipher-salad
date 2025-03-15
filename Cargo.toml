@@ -2,11 +2,11 @@
 name = "cipher-salad"
 version = "0.1.0"
 authors = ["Emil Englesson <englesson.emil@gmail.com>"]
-edition = "2018"
-description = "A collection of historical ciphers, served fresh"
+edition = "2024"
+description = "Cipher salad aspires to be a diverse selection of classic ciphers"
 repository = "https://github.com/LimeEng/cipher-salad/"
 license = "MIT"
-keywords = ["cipher", "vigenere"]
+keywords = ["cipher", "vigenere", "caesar"]
 categories = ["algorithms", "cryptography"]
 
 exclude = [
@@ -16,7 +16,7 @@ exclude = [
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-unicode-segmentation = "1.7.1"
+unicode-segmentation = "1.12"
 
 [dev-dependencies]
 quickcheck = "1.0"
