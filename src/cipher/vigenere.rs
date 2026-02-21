@@ -29,10 +29,11 @@ impl Vigenere {
         key: &str,
         operation: CipherOperation,
     ) -> Result<String, VigenereError> {
-        let valid_key = key
-            .graphemes(true)
-            .all(|grapheme| self.alphabet.contains(grapheme));
-        if !valid_key {
+        let mut key_iter = key.graphemes(true).peekable();
+        if key_iter.peek().is_none() {
+            return Err(VigenereError::InvalidKey);
+        }
+        if !key_iter.all(|grapheme| self.alphabet.contains(grapheme)) {
             return Err(VigenereError::InvalidKey);
         }
 
@@ -44,10 +45,7 @@ impl Vigenere {
 
         loop {
             let next = contents.next();
-            let plain_grapheme = match next {
-                Some(p) => p,
-                None => break,
-            };
+            let Some(plain_grapheme) = next else { break };
 
             if !self.alphabet.contains(plain_grapheme) {
                 match self.foreign_policy {
@@ -74,7 +72,6 @@ impl Vigenere {
                             // This is why it is possible to cast to an isize "losslessly"
                             let plain_index = plain_index as isize;
                             let key_index = key_index as isize;
-                            // rem_euclid has slightly different semantics than %, which in this case is what is needed
                             (plain_index - key_index).rem_euclid(self.alphabet.length() as isize)
                                 as usize
                         }

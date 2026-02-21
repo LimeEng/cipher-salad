@@ -1,9 +1,11 @@
-use cipher_salad::Alphabet;
-use cipher_salad::ForeignGraphemesPolicy;
-use cipher_salad::cipher::{Atbash, Caesar, Vigenere};
+use cipher_salad::{
+    Alphabet, ForeignGraphemesPolicy,
+    cipher::{Atbash, Caesar, Vigenere},
+};
 use quickcheck_macros::quickcheck;
 
 #[quickcheck]
+#[allow(clippy::needless_pass_by_value)]
 fn vigenere_identity(plaintext: String) -> bool {
     let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let alphabet = Alphabet::new(alphabet);
@@ -17,6 +19,7 @@ fn vigenere_identity(plaintext: String) -> bool {
 }
 
 #[quickcheck]
+#[allow(clippy::needless_pass_by_value)]
 fn caesar_identity(plaintext: String) -> bool {
     let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let alphabet = Alphabet::new(alphabet);
@@ -30,6 +33,7 @@ fn caesar_identity(plaintext: String) -> bool {
 }
 
 #[quickcheck]
+#[allow(clippy::needless_pass_by_value)]
 fn atbash_identity(plaintext: String) -> bool {
     let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let alphabet = Alphabet::new(alphabet);
