@@ -3,9 +3,9 @@
 
 # Cipher salad
 
-Cipher salad aspires to be a diverse selection of classic ciphers.
+Cipher salad is a collection of classic ciphers.
 
-Currently, only three ciphers are implemented.
+The following ciphers are currently available:
 
 - [Atbash cipher](https://en.wikipedia.org/wiki/Atbash)
 - [Caesar cipher](https://en.wikipedia.org/wiki/Caesar_cipher)
@@ -13,9 +13,6 @@ Currently, only three ciphers are implemented.
 
 ## Installation
 
-Add this to your `Cargo.toml`:
-
-```toml
-[dependencies]
-cipher-salad = "0.1.0"
+```sh
+cargo add cipher_salad
 ```

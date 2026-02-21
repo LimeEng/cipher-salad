@@ -1,10 +1,10 @@
-pub mod atbash;
-pub mod caesar;
-pub mod vigenere;
+mod atbash;
+mod caesar;
+mod vigenere;
 
-pub use atbash::*;
-pub use caesar::*;
-pub use vigenere::*;
+pub use atbash::Atbash;
+pub use caesar::Caesar;
+pub use vigenere::{Vigenere, VigenereError};
 
 #[derive(Clone, Copy, Debug)]
 enum CipherOperation {
