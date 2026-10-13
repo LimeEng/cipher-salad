@@ -5,7 +5,7 @@ use cipher_salad::{
 use quickcheck_macros::quickcheck;
 
 #[quickcheck]
-#[allow(clippy::needless_pass_by_value)]
+#[expect(clippy::needless_pass_by_value)]
 fn vigenere_identity(plaintext: String) -> bool {
     let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let alphabet = Alphabet::new(alphabet);
@@ -19,7 +19,7 @@ fn vigenere_identity(plaintext: String) -> bool {
 }
 
 #[quickcheck]
-#[allow(clippy::needless_pass_by_value)]
+#[expect(clippy::needless_pass_by_value)]
 fn caesar_identity(plaintext: String) -> bool {
     let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let alphabet = Alphabet::new(alphabet);
@@ -33,7 +33,7 @@ fn caesar_identity(plaintext: String) -> bool {
 }
 
 #[quickcheck]
-#[allow(clippy::needless_pass_by_value)]
+#[expect(clippy::needless_pass_by_value)]
 fn atbash_identity(plaintext: String) -> bool {
     let alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let alphabet = Alphabet::new(alphabet);

@@ -11,8 +11,16 @@ categories = ["algorithms", "cryptography"]
 exclude = [".github/**"]
 
 [dependencies]
-unicode-segmentation = "1.12"
+unicode-segmentation = "1"
 
 [dev-dependencies]
-quickcheck = "1.1"
-quickcheck_macros = "1.2"
+quickcheck = "1"
+quickcheck_macros = "1"
+
+[lints.clippy]
+all = { level = "deny", priority = -1 }
+pedantic = { level = "deny", priority = -1 }
+missing_errors_doc = "allow"
+
+[lints.rustdoc]
+all = { level = "deny", priority = -1 }

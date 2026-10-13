@@ -70,9 +70,10 @@ impl Vigenere {
                             // https://doc.rust-lang.org/nomicon/vec-alloc.html
                             // As such we must limit all allocations to isize::MAX elements
                             // This is why it is possible to cast to an isize "losslessly"
-                            let plain_index = plain_index as isize;
-                            let key_index = key_index as isize;
-                            (plain_index - key_index).rem_euclid(self.alphabet.length() as isize)
+                            let plain_index = plain_index.cast_signed();
+                            let key_index = key_index.cast_signed();
+                            (plain_index - key_index)
+                                .rem_euclid(self.alphabet.length().cast_signed())
                                 as usize
                         }
                     };
