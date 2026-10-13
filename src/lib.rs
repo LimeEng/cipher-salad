@@ -1,5 +1,4 @@
-#![allow(clippy::missing_panics_doc)]
-#![allow(clippy::missing_errors_doc)]
+//! Implementations of classic ciphers.
 
 mod alphabet;
 pub mod cipher;

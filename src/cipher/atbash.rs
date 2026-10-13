@@ -21,9 +21,12 @@ impl Atbash {
             .map(|grapheme| (grapheme, self.alphabet.index_of(grapheme)))
             .filter_map(|(grapheme, index)| match index {
                 Some(grapheme_index) => {
-                    let ciphered_index = -(grapheme_index as isize + 1);
-                    let ciphered_index = ciphered_index.rem_euclid(self.alphabet.length() as isize);
-                    self.alphabet.grapheme_at(ciphered_index as usize).cloned()
+                    let ciphered_index = -(grapheme_index.cast_signed() + 1);
+                    let ciphered_index =
+                        ciphered_index.rem_euclid(self.alphabet.length().cast_signed());
+                    self.alphabet
+                        .grapheme_at(ciphered_index.cast_unsigned())
+                        .cloned()
                 }
                 None => match self.foreign_policy {
                     ForeignGraphemesPolicy::Include => Some(grapheme.to_string()),

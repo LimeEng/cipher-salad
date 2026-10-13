@@ -28,8 +28,8 @@ impl Caesar {
                 Some(grapheme_index) => {
                     let ciphered_index = match operation {
                         Encrypt => (grapheme_index + key).rem_euclid(self.alphabet.length()),
-                        Decrypt => (grapheme_index as isize - key as isize)
-                            .rem_euclid(self.alphabet.length() as isize)
+                        Decrypt => (grapheme_index.cast_signed() - key.cast_signed())
+                            .rem_euclid(self.alphabet.length().cast_signed())
                             as usize,
                     };
                     self.alphabet.grapheme_at(ciphered_index).cloned()
